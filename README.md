@@ -1,65 +1,68 @@
 # 💳 Pancaniti ET: Credit Card Fraud Scrutiny System V1.0
 
-***Pancaniti ET: Credit Card Fraud Scrutiny System V1.0*** adalah sistem deteksi penipuan kartu kredit berbasis *Machine Learning* yang dirancang khusus untuk menangani masalah ketidakseimbangan data *(imbalanced data)* secara ekstrem. Dengan mengombinasikan algoritma Extra Trees Classifier dan pendekatan ***Hybrid Resampling (SMOTE + Udersampling)***, sistem ini mampu mengenali pola transaksi mencurigakan dengan presisi di tengah jutaan transaksi normal.Proyek ini menggunakan dataset dari Kaggle ("mlg-ulb/creditcardfraud") yang menerapkan standar ***Principal Component Analysis (PCA)*** untuk melindungi privasi dan data sensitif pelanggan. Melalui teknik ini, fitur-fitur asli ditransformasikan menjadi variabel numerik ($V1, V2, ..., V28$) untuk menjaga kerahasiaan informasi tanpa menghilangkan karakteristik penting dalam pendeteksian pola transaksi.
+<div align="left">
+  
+  [![Open In Colab](https://img.shields.io/badge/Google%20Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/19vLJUHVEptm-pDsfzts66aw82_pozZhU?usp=sharing)
+  [![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow?style=for-the-badge)](https://huggingface.co/Ripanrz/credit-card-fraud-et-v1.0)
+  [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+  [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+
+</div>
+
+---
+
+## 📝 Deskripsi Proyek
+***Pancaniti ET: Credit Card Fraud Scrutiny System V1.0*** adalah sistem deteksi penipuan kartu kredit berbasis *Machine Learning* yang dirancang khusus untuk menangani masalah ketidakseimbangan data *(imbalanced data)* secara ekstrem. 
+
+Dengan mengombinasikan algoritma **Extra Trees Classifier** dan pendekatan ***Hybrid Resampling (SMOTE + Undersampling)***, sistem ini mampu mengenali pola transaksi mencurigakan dengan presisi di tengah jutaan transaksi normal. Proyek ini menggunakan dataset dari Kaggle (**"mlg-ulb/creditcardfraud"**) yang menerapkan standar ***Principal Component Analysis (PCA)*** untuk melindungi privasi pelanggan. Fitur-fitur asli ditransformasikan menjadi variabel numerik ($V1, V2, ..., V28$) untuk menjaga kerahasiaan tanpa menghilangkan karakteristik penting dalam pendeteksian pola transaksi.
 
 ---
 
 ## 🚀 Fitur Utama
-* **Hybrid Resampling**: Solusi cerdas untuk menangani data yang sangat tidak seimbang, di mana transaksi penipuan hanya sebesar 0.173% dari total data.
-* **Extra Trees Power**: Memanfaatkan algoritma *Ensemble Learning* yang tangguh dan efisien untuk klasifikasi data fraud.
+* **Hybrid Resampling**: Solusi cerdas untuk menangani data yang sangat tidak seimbang (Fraud hanya 0.173%).
+* **Extra Trees Power**: Memanfaatkan algoritma *Ensemble Learning* yang tangguh dan efisien.
 * **Integrated Deployment**: Model dikemas menggunakan `joblib` dan diunggah langsung ke **Hugging Face Hub**.
 
 ---
 
 ## 🧠 Metodologi: Penjelasan Hybrid Resampling
-Masalah utama dalam deteksi penipuan adalah **Data Jomplang**. Dalam dataset ini, terdapat 284.315 transaksi normal banding 492 transaksi penipuan. Jika AI dilatih langsung, ia akan cenderung menebak "Normal" terus-menerus karena itu cara termudah untuk mendapatkan akurasi tinggi.
+Masalah utama dalam deteksi penipuan adalah **Data Jomplang**. Terdapat 284.315 transaksi normal berbanding hanya 492 transaksi penipuan. Proyek ini menggunakan teknik gabungan:
 
-Untuk mengatasinya, proyek ini menggunakan teknik **Hybrid Resampling** (Gabungan SMOTE + Undersampling):
+### 1. SMOTE (Oversampling Minoritas)
+Menciptakan **data sintetis baru** berdasarkan pola transaksi penipuan yang ada. Ini memberi model lebih banyak contoh untuk dipelajari tanpa sekadar menduplikasi data lama.
 
-### 1. SMOTE (Oversampling pada data Minoritas)
-Kita tidak sekadar menduplikasi data penipuan yang sedikit, tapi **menciptakan data penipuan baru yang sintetis**. SMOTE melihat pola di antara transaksi penipuan yang ada, lalu membuat "titik data baru" yang mirip di sekitarnya. Ini memberi model lebih banyak contoh untuk dipelajari.
-
-### 2. Random Undersampling (pada data Mayoritas)
-Setelah data penipuan ditambah secara sintetis, kita **mengurangi sebagian data transaksi normal**. Tujuannya agar jumlah data normal tidak terlalu mendominasi memori model, sehingga model bisa fokus melihat perbedaan tipis antara transaksi asli dan palsu.
-
-**Hasilnya?** Model memiliki proporsi data yang lebih seimbang untuk proses belajar yang jauh lebih adil dan akurat.
+### 2. Random Undersampling (Undersampling Mayoritas)
+**Mengurangi sebagian data transaksi normal** agar jumlahnya tidak mendominasi memori model, sehingga model bisa lebih fokus pada perbedaan tipis antara transaksi asli dan palsu.
 
 ---
 
 ## 🛠️ Tech Stack
-* **Language**: Python 
-* **Libraries**: 
-    * `Scikit-learn` (Modeling & Scaling) 
-    * `Imbalanced-learn` (SMOTE & Undersampling) 
-    * `XGBoost` & `Pandas` (Data Manipulation) 
-    * `Joblib` (Model Packaging) 
-* **Deployment**: Hugging Face Hub 
+| Komponen | Teknologi |
+| :--- | :--- |
+| **Bahasa** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) |
+| **Modeling** | ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white) ![Imbalanced-learn](https://img.shields.io/badge/Imbalanced--Learn-blue?style=flat-square) |
+| **Manipulasi Data** | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/Numpy-013243?style=flat-square&logo=numpy&logoColor=white) |
+| **Deployment** | ![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Repository-FFD21E?style=flat-square) |
 
 ---
 
 ## 📊 Hasil Evaluasi
-Berdasarkan pengujian pada test set murni (data yang tidak dimodifikasi), model Extra Trees menunjukkan performa deteksi yang cukup baik. Hal ini terlihat dari Confusion Matrix dan Classification Report, terutama pada nilai recall yang tinggi dalam mendeteksi transaksi fraud.
+Model Extra Trees menunjukkan performa *recall* yang tinggi dalam mendeteksi transaksi fraud. Namun, terdapat indikasi **overfitting** di mana model terlalu menyesuaikan diri dengan data hasil resampling.
 
-Namun, terdapat indikasi overfitting. Model tampak terlalu menyesuaikan diri dengan data hasil resampling, sehingga belum mampu menggeneralisasi data asli secara optimal.
-
-Sebagai langkah perbaikan, beberapa pendekatan yang dapat dilakukan antara lain mengurangi rasio SMOTE, membatasi max_depth pada pohon, atau menerapkan teknik pruning.
+**Saran Perbaikan:**
+- Mengurangi rasio SMOTE.
+- Membatasi `max_depth` pada pohon keputusan.
+- Menerapkan teknik *pruning*.
 
 <div align="center">
-  <img src="hasil-evaluasi-credit-card-fraud-et-v1.0.png" alt="Hasil Evaluasi (Pancaniti-ET: Credit Card Fraud Scrutiny System V1.0)" width="800">
+  <img src="hasil-evaluasi-credit-card-fraud-et-v1.0.png" alt="Hasil Evaluasi" width="800">
 </div>
 
 ---
 
-## 💻 Cara Penggunaan
-1. **Persiapkan Lingkungan**: Pastikan library seperti `scikit-learn`, dan `imbalanced-learn` sudah terinstal.
-2. **Jalankan Notebook**: Ikuti tahapan dari akuisisi dataset Kaggle, preprocessing dengan `RobustScaler`, hingga pelatihan model.
-3. **Prediksi**: Gunakan model yang telah dilatih untuk memprediksi label transaksi pada data baru.
-
----
-
-## 🌐 Model Deployment
-Model ini tersedia secara publik di Hugging Face. Anda bisa mengakses repositorinya di sini:
-👉 **[Hugging Face Repo](https://huggingface.co/Ripanrz/credit-card-fraud-et-v1.0)**
+## 🌐 Akses Model
+Anda dapat mengakses model yang telah di-deploy di sini:
+👉 **[Hugging Face Repository](https://huggingface.co/Ripanrz/credit-card-fraud-et-v1.0)**
 
 ---
 ***Project dikembangkan sebagai bagian dari eksperimen sistem keamanan finansial berbasis AI.***

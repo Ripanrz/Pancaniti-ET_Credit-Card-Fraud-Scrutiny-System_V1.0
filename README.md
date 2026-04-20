@@ -5,7 +5,6 @@
 ---
 
 ## 🚀 Fitur Utama
-* **Automated Benchmarking**: Menggunakan `LazyPredict` untuk mengadu lebih dari 30 algoritma klasifikasi secara otomatis guna menemukan model terbaik.
 * **Hybrid Resampling**: Solusi cerdas untuk menangani data yang sangat tidak seimbang, di mana transaksi penipuan hanya sebesar 0.173% dari total data.
 * **Extra Trees Power**: Memanfaatkan algoritma *Ensemble Learning* yang tangguh dan efisien untuk klasifikasi data fraud.
 * **Integrated Deployment**: Model dikemas menggunakan `joblib` dan diunggah langsung ke **Hugging Face Hub**.
@@ -32,7 +31,6 @@ Setelah data penipuan ditambah secara sintetis, kita **mengurangi sebagian data 
 * **Libraries**: 
     * `Scikit-learn` (Modeling & Scaling) 
     * `Imbalanced-learn` (SMOTE & Undersampling) 
-    * `LazyPredict` (Auto-ML Benchmarking) 
     * `XGBoost` & `Pandas` (Data Manipulation) 
     * `Joblib` (Model Packaging) 
 * **Deployment**: Hugging Face Hub 
@@ -40,7 +38,11 @@ Setelah data penipuan ditambah secara sintetis, kita **mengurangi sebagian data 
 ---
 
 ## 📊 Hasil Evaluasi
-Berdasarkan pengujian pada *test set* murni (data yang tidak dimodifikasi), model **Extra Trees** memberikan performa deteksi yang solid, yang divisualisasikan melalui Confusion Matrix dan Classification Report untuk memastikan tingkat *recall* yang tinggi pada transaksi fraud.
+Berdasarkan pengujian pada test set murni (data yang tidak dimodifikasi), model Extra Trees menunjukkan performa deteksi yang cukup baik. Hal ini terlihat dari Confusion Matrix dan Classification Report, terutama pada nilai recall yang tinggi dalam mendeteksi transaksi fraud.
+
+Namun, terdapat indikasi overfitting. Model tampak terlalu menyesuaikan diri dengan data hasil resampling, sehingga belum mampu menggeneralisasi data asli secara optimal.
+
+Sebagai langkah perbaikan, beberapa pendekatan yang dapat dilakukan antara lain mengurangi rasio SMOTE, membatasi max_depth pada pohon, atau menerapkan teknik pruning.
 
 <div align="center">
   <img src="hasil-evaluasi-credit-card-fraud-et-v1.0.png" alt="Hasil Evaluasi (Pancaniti-ET: Credit Card Fraud Scrutiny System V1.0)" width="800">
@@ -49,7 +51,7 @@ Berdasarkan pengujian pada *test set* murni (data yang tidak dimodifikasi), mode
 ---
 
 ## 💻 Cara Penggunaan
-1. **Persiapkan Lingkungan**: Pastikan library seperti `scikit-learn`, `imbalanced-learn`, dan `lazypredict` sudah terinstal.
+1. **Persiapkan Lingkungan**: Pastikan library seperti `scikit-learn`, dan `imbalanced-learn` sudah terinstal.
 2. **Jalankan Notebook**: Ikuti tahapan dari akuisisi dataset Kaggle, preprocessing dengan `RobustScaler`, hingga pelatihan model.
 3. **Prediksi**: Gunakan model yang telah dilatih untuk memprediksi label transaksi pada data baru.
 

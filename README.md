@@ -1,6 +1,6 @@
-# 💳 Pancaniti ET: Credit Card Fraud Scrutiny System
+# 💳 Pancaniti ET: Credit Card Fraud Scrutiny System V1.0
 
-**Pancaniti ET** adalah sistem deteksi penipuan kartu kredit berbasis *Machine Learning* yang dirancang untuk menangani masalah ketidakseimbangan data (*imbalanced data*) secara ekstrem. Dengan menggunakan algoritma **Extra Trees Classifier** dan pendekatan **Hybrid Resampling**, sistem ini mampu mengenali pola transaksi mencurigakan dengan presisi tinggi di tengah jutaan transaksi normal.
+***Pancaniti ET: Credit Card Fraud Scrutiny System V1.0*** adalah sistem deteksi penipuan kartu kredit berbasis *Machine Learning* yang dirancang khusus untuk menangani masalah ketidakseimbangan data *(imbalanced data)* secara ekstrem. Dengan mengombinasikan algoritma Extra Trees Classifier dan pendekatan ***Hybrid Resampling (SMOTE + Udersampling)***, sistem ini mampu mengenali pola transaksi mencurigakan dengan presisi di tengah jutaan transaksi normal.Proyek ini menggunakan dataset dari Kaggle ("mlg-ulb/creditcardfraud") yang menerapkan standar ***Principal Component Analysis (PCA)*** untuk melindungi privasi dan data sensitif pelanggan. Melalui teknik ini, fitur-fitur asli ditransformasikan menjadi variabel numerik ($V1, V2, ..., V28$) untuk menjaga kerahasiaan informasi tanpa menghilangkan karakteristik penting dalam pendeteksian pola transaksi.
 
 ---
 
@@ -60,5 +60,4 @@ Model ini tersedia secara publik di Hugging Face. Anda bisa mengakses repositori
 👉 **[Hugging Face Repo](https://huggingface.co/Ripanrz/credit-card-fraud-et-v1.0)**
 
 ---
-**Author**: Ripan
-*Project dikembangkan sebagai bagian dari eksperimen sistem keamanan finansial berbasis AI.*
+***Project dikembangkan sebagai bagian dari eksperimen sistem keamanan finansial berbasis AI.***

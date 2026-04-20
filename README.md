@@ -42,6 +42,9 @@ Setelah data penipuan ditambah secara sintetis, kita **mengurangi sebagian data 
 ## 📊 Hasil Evaluasi
 Berdasarkan pengujian pada *test set* murni (data yang tidak dimodifikasi), model **Extra Trees** memberikan performa deteksi yang solid, yang divisualisasikan melalui Confusion Matrix dan Classification Report untuk memastikan tingkat *recall* yang tinggi pada transaksi fraud.
 
+<div align="center">
+  <img src="hasil-evaluasi-credit-card-fraud-et-v1.0.png" alt="Hasil Evaluasi (Pancaniti-ET: Credit Card Fraud Scrutiny System V1.0)" width="800">
+</div>
 
 ---
 
